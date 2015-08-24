@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1097</width>
-    <height>550</height>
+    <height>649</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,7 +51,7 @@
    <property name="title">
     <string>URL</string>
    </property>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="lineEditURL">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -130,7 +130,7 @@
      <x>10</x>
      <y>180</y>
      <width>1081</width>
-     <height>361</height>
+     <height>461</height>
     </rect>
    </property>
    <property name="title">
@@ -142,27 +142,75 @@
       <x>10</x>
       <y>20</y>
       <width>1061</width>
-      <height>291</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>HTML头</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="pbtnHeadClear">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>100</y>
+        <x>10</x>
+        <y>10</y>
         <width>93</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>清空</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnHeadCopy">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>10</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>复制</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnHeadSave">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>另存为</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEditHead">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>1041</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -170,17 +218,160 @@
      <attribute name="title">
       <string>HTML内容</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>70</y>
+        <x>10</x>
+        <y>10</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>正则表达式:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combbRegular">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>10</y>
+        <width>211</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>10</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>匹配项目:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditNum">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>10</y>
+        <width>271</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>10</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>个</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>811</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnBodySearch">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>40</y>
         <width>93</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>搜索(S)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnBodyExtract">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>40</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>提取(P)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnBodyClear">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>清空(L)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnBodyCopy">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>80</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>复制(C)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnBodySave">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>80</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>另存为(A)</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEditBody">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>1041</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -188,17 +379,78 @@
      <attribute name="title">
       <string>提取内容</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="pbtnGetClear">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>100</y>
+        <x>10</x>
+        <y>10</y>
         <width>93</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>清空提取</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnGetCopy">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>10</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>复制</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnGetSave">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>10</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>另存为</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbtnGetDown">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>10</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>迅雷下载</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEditGet">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>1041</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
