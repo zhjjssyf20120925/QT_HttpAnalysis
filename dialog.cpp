@@ -1,6 +1,7 @@
-#include "dialog.h"
+﻿#include "dialog.h"
 #include "ui_dialog.h"
 #include "QMessageBox"
+#include "QDebug"
 
 
 /** ***********************************************************************************
@@ -15,6 +16,8 @@ Dialog::Dialog(QWidget *parent) :
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+    ui->proBar_UrlAnalysis->setRange(0,100);
+    ui->lineEditURL->setText("https://www.baidu.com");
 }
 
 
@@ -39,7 +42,25 @@ Dialog::~Dialog()
  *************************************************************************************/
 void Dialog::on_pbPaste_clicked()
 {
-    QMessageBox::about(this,tr("提示信息"),tr("更新成功"));
+    //QMessageBox::about(this,tr("提示信息"),tr("更新成功"));
+
+
+    // 获取需要请求的URL地址
+    QString url;
+    url= ui->lineEditURL->text();
+    //edtURL.GetWindowTextW(url);
+    // 构造Http客户端，发起请求
+    WinHttpClient client(url.toStdWString(),HtmlRequestProgress);
+    client.SendHttpRequest();
+
+    //收集服务器返回的Http头和内容
+    wstring httpResponseHeader = client.GetResponseHeader();
+    wstring httpResponseContent = client.GetResponseContent();
+
+    //把Http头和内容显示在Tab标签页的文本框中
+    ui->textEditHead->setText(QString::fromStdWString(httpResponseHeader));
+    ui->textEditBody->setText(QString::fromStdWString(httpResponseContent));
+    //return false;
 }
 
 /** ***********************************************************************************
@@ -220,4 +241,28 @@ void Dialog::on_pbtnGetSave_clicked()
 void Dialog::on_pbtnGetDown_clicked()
 {
 
+}
+
+
+/** ***********************************************************************************
+ *@程序作者：赵进军
+ *@函数功能：URL分析过程进度回调
+ *@参数说明：
+ *@注意事项：
+ *@创建日期：
+ *************************************************************************************/
+bool Dialog::HtmlRequestProgress(double progress)
+{
+    //double kk=progress;
+    //std::cout<<"dsadsa";
+
+    //ui->proBar_UrlAnalysis->setValue(static_cast<int>(progress));
+
+    qDebug("intensity:%d",progress);
+    return true;
+}
+
+void Dialog::on_proBar_UrlAnalysis_valueChanged(int value)
+{
+    //ui->proBar_UrlAnalysis->setValue(static_cast<int>(value));
 }
